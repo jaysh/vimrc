@@ -14,6 +14,10 @@ nnoremap ,c :!cat %\|pbcopy<CR>
 
 set mouse=n
 
-" If installed using Homebrew
 set rtp+=/usr/local/opt/fzf
+
+" Ag word under cursor
+nnoremap <Leader>a :Ag <C-r><C-w><CR>
+
+map <leader>j :Files<cr>
 
