@@ -14,7 +14,7 @@ nnoremap ,c :!cat %\|pbcopy<CR>
 
 set mouse=n
 
-set rtp+=/usr/local/opt/fzf
+set rtp+=~/.fzf
 
 " Ag word under cursor
 nnoremap <Leader>a :Ag <C-r><C-w><CR>
@@ -31,6 +31,7 @@ cnoremap %p <C-R>=fnameescape(expand('%:p'))<cr>
 
 " Custom macros
 iabbrev pry! require "pry"; binding.pry
+iabbrev pdb! import pdb; pdb.set_trace()
 
 " Show line numbers
 set number
