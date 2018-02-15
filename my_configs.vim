@@ -48,3 +48,17 @@ endif
 
 " When yanking, put the contents on the system-wide clipboard
 set clipboard=unnamed
+
+" Copy current file path to the clipboard
+nnoremap <leader>cf :let @*=expand("%")<CR>
+
+nnoremap <leader>or :VtrOpenRunner<cr>
+
+nmap <leader>g :call HashInGithub()<CR>
+fun! HashInGithub()
+    let commit = expand("<cword>")
+    let url = "https://github.com/gocardless/payments-service/commit/" . commit
+    exec 'silent !open ' . url
+	redraw!
+endfun
+
