@@ -370,6 +370,10 @@ function! s:EnsureRunnerPane(...)
     endif
 endfunction
 
+function! s:SendAllTextToRunner()
+    call s:SendTextToRunner(getline(1,'$'))
+endfunction
+
 function! s:SendLinesToRunner(ensure_pane) range
     if a:ensure_pane | call s:EnsureRunnerPane() | endif
     if !s:ValidRunnerPaneSet() | return | endif
@@ -454,6 +458,7 @@ function! s:DefineCommands()
     command! VtrFlushCommand call s:FlushCommand()
     command! VtrSendCtrlD call s:SendCtrlD()
     command! VtrAttachToPane call s:PromptForRunnerToAttach()
+    command! VtrSendAllTextToRunner call s:SendAllTextToRunner()
 endfunction
 
 function! s:DefineKeymaps()
