@@ -1,9 +1,3 @@
-" Disable arrow keys to force usable of h/j/k/l
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
-
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
 autocmd FileType python setlocal shiftwidth=4 tabstop=4
 
@@ -21,6 +15,8 @@ nnoremap <Leader>a :Ag <C-r><C-w><CR>
 
 map <leader>j :Files<CR>
 
+nnoremap <leader>ya :%y<CR>
+nnoremap <leader>bd :bp\|bd #<cr>
 " Automatic Filename expansions for commands
 " Directory for current file
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
@@ -29,9 +25,12 @@ cnoremap %f <C-R>=fnameescape(expand('%:t'))<cr>
 " Full path for current file
 cnoremap %p <C-R>=fnameescape(expand('%:p'))<cr>
 
+nnoremap <leader>et :e ~/.tmux.conf<cr>
+
 " Custom macros
 iabbrev pry! require "pry"; binding.pry
 iabbrev pdb! import pdb; pdb.set_trace()
+iabbrev transaction! ActiveRecord::Base.transaction(requires_new: true) do
 
 " Show line numbers
 set number
@@ -53,8 +52,10 @@ set clipboard=unnamed
 nnoremap <leader>cf :let @*=expand("%")<CR>
 
 nnoremap <leader>or :VtrOpenRunner<cr>
+nnoremap <leader>sr :VtrSendLinesToRunner<cr>
+nnoremap <leader>ar :VtrSendAllTextToRunner<cr>
 
-nmap <leader>g :call HashInGithub()<CR>
+map <leader>g :call HashInGithub()<CR>
 fun! HashInGithub()
     let commit = expand("<cword>")
     let url = "https://github.com/gocardless/payments-service/commit/" . commit
@@ -62,3 +63,4 @@ fun! HashInGithub()
 	redraw!
 endfun
 
+set esckeys
